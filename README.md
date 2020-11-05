@@ -86,8 +86,27 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 **Preguntas**
 
 1. ¿Cuántos y cuáles recursos crea Azure junto con la VM?
+
+![](images/part1/recursos.png)
+
 2. ¿Brevemente describa para qué sirve cada recurso?
+
+    * ***Network watcher***: Supervisa, diagnostica y obtiene información sobre el rendimiento y el estado de la red
+    * ***Virtual network***: Construcción de redes virtuales
+    * ***Máquina virtual***: Máquina de trabajo
+    * ***Ip***: IP pública para nuestra máquina
+    * ***Security group***: Filtrado de tráfico de red
+    * ***Disco***: Disco de sistema.
+    * ***Vertical scalability***: Interfaz de red para nuestra máquina
+    * ***Key***: Llave SSH para conexión
+    
 3. ¿Al cerrar la conexión ssh con la VM, por qué se cae la aplicación que ejecutamos con el comando `npm FibonacciApp.js`? ¿Por qué debemos crear un *Inbound port rule* antes de acceder al servicio?
+
+    * Al iniciar una sesión SSH, los procesos creados por esta quedarán enlazados e esta sesión.
+    Una vez la sesión se cierre, todos los procesos y sus hijos serán cerrados.
+    * El puerto 3000 se abre debido a que por defecto todos los puertos estarán cerrados, a excepción
+    de los más importantes, como 22 de ssh o el 80 de web.
+    
 4. Adjunte tabla de tiempos e interprete por qué la función tarda tando tiempo.
 5. Adjunte imágen del consumo de CPU de la VM e interprete por qué la función consume esa cantidad de CPU.
 6. Adjunte la imagen del resumen de la ejecución de Postman. Interprete:
