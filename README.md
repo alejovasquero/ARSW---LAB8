@@ -86,17 +86,6 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 **Preguntas**
 
 1. ¿Cuántos y cuáles recursos crea Azure junto con la VM?
-<<<<<<< HEAD
-![](images/part1/resources.PNG)
-1. ¿Brevemente describa para qué sirve cada recurso?
-2. ¿Al cerrar la conexión ssh con la VM, por qué se cae la aplicación que ejecutamos con el comando `npm FibonacciApp.js`? ¿Por qué debemos crear un *Inbound port rule* antes de acceder al servicio?
-3. Adjunte tabla de tiempos e interprete por qué la función tarda tando tiempo.
-![](images/part1/beforeEV/docTimes0.png)
-![](images/part1/beforeEV/docTimes.PNG)
-4. Adjunte imágen del consumo de CPU de la VM e interprete por qué la función consume esa cantidad de CPU.
-![](images/part1/beforeEV/docMachine.PNG)
-5. Adjunte la imagen del resumen de la ejecución de Postman. Interprete:
-=======
 
 ![](images/part1/recursos.png)
 
@@ -119,17 +108,46 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
     de los más importantes, como 22 de ssh o el 80 de web.
     
 4. Adjunte tabla de tiempos e interprete por qué la función tarda tando tiempo.
+
+![](images/part1/beforeEV/docTimes0.png)
+
+![](images/part1/beforeEV/docTimes.PNG)
+
+La funcion recibe un numero, pero por lo que es tan grande el numero a calcular, la funcion ocupa mas capacidad de procesamiento y memoria para calcular el valor para devolver.
+
 5. Adjunte imágen del consumo de CPU de la VM e interprete por qué la función consume esa cantidad de CPU.
+![](images/part1/beforeEV/docMachine.PNG)
+
+El procesamiento es alto y se refleja en el reporte de la maquina, que se usa un 100% de capacidad para la funcion, adicionalmente se puede ver que el uso del disco es critico durante un momento mientras se usa la funcion.
+
 6. Adjunte la imagen del resumen de la ejecución de Postman. Interprete:
->>>>>>> 142a70e8ccc224efd627515078758f35da4168e1
     * Tiempos de ejecución de cada petición.
     * Si hubo fallos documentelos y explique.
-![](images/part1/beforeEV/docMachine.PNG)
+Antes de escalar verticalmente
+![](images/part1/beforeEV/docPostman.png)
+![](images/part1/beforeEV/docPostman2.png)
+Despues de escalar verticalmente
+![](images/part1/afterEV/docPostmanERR.png)
+![](images/part1/afterEV/docPostman.png)
 6. ¿Cuál es la diferencia entre los tamaños `B2ms` y `B1ls` (no solo busque especificaciones de infraestructura)?
+    - B1ls: 
+  Solo funciona en Linux
+  CPU: 1
+  RAM: 0.5
+  Temp SSD: 4 
+  Discos Maximos: 2
+  Costo: 3,80 US$
+     - B2ms
+  CPU: 2
+  RAM: 8
+  Temp SSD: 16 
+  Discos Maximos: 4
+  Costo: 60,74 US$
 7. ¿Aumentar el tamaño de la VM es una buena solución en este escenario?, ¿Qué pasa con la FibonacciApp cuando cambiamos el tamaño de la VM?
 8.  ¿Qué pasa con la infraestructura cuando cambia el tamaño de la VM? ¿Qué efectos negativos implica?
 9.  ¿Hubo mejora en el consumo de CPU o en los tiempos de respuesta? Si/No ¿Por qué?
-![](images/part1/)
+![](images/part1/afterEV/docMachine.PNG)
+Si, porque disminuyo la capacidad de CPU que se usa para calcular fibonacci, con los parametros que se dieron, cuando se cambio el tamaño de la maquina, por lo cual le permitio usar menos del 50% de la CPU.
 10. Aumente la cantidad de ejecuciones paralelas del comando de postman a `4`. ¿El comportamiento del sistema es porcentualmente mejor?
 
 ### Parte 2 - Escalabilidad horizontal
