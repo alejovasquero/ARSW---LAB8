@@ -110,13 +110,44 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 4. Adjunte tabla de tiempos e interprete por qué la función tarda tando tiempo.
 5. Adjunte imágen del consumo de CPU de la VM e interprete por qué la función consume esa cantidad de CPU.
 6. Adjunte la imagen del resumen de la ejecución de Postman. Interprete:
-    * Tiempos de ejecución de cada petición.
+    * Tiempos de ejecución de cada petición. 
+    
+        Para petición antes de realizar escalado se obtuvieron los siguientes resultados.
+        
+        ![](images/part1/beforeEV/docTimes.PNG)
+        
+        Desde el browser, las peticiones rozaban los 10 minutos máximo.
+        Con postman se obtuvieron peores resultados.
+        
+        ![](images/part1/beforeEV/docPostman2.png)
+        
+        Estos resultados están justificados teniendo en cuenta el excesivo uso de CPU.
+        
+        ![](images/part1/beforeEV/docTimes.PNG)
+        
+        Para solucionar esto, hacemos escalado vertical, lo que nos da los siguientes resultados.
+        
+        ![](images/part1/afterEV/docTimes.PNG)
+        
+        Las respuestas han llegado a segundos, y postman se ha completado más rápido.
+        
     * Si hubo fallos documentelos y explique.
+    
+        Durante Postman se encontró el siguiente fallo.
+        
+        ![](images/part1/afterEV/docPostmanERR.png)
+        
+        Este error debe ser causado debido a que al hacer escalado, la máquina está
+        realizando tareas de configuración, por lo que cualquier petición no será atendida.
+        
 7. ¿Cuál es la diferencia entre los tamaños `B2ms` y `B1ls` (no solo busque especificaciones de infraestructura)?
 8. ¿Aumentar el tamaño de la VM es una buena solución en este escenario?, ¿Qué pasa con la FibonacciApp cuando cambiamos el tamaño de la VM?
+--
 9. ¿Qué pasa con la infraestructura cuando cambia el tamaño de la VM? ¿Qué efectos negativos implica?
+--
 10. ¿Hubo mejora en el consumo de CPU o en los tiempos de respuesta? Si/No ¿Por qué?
 11. Aumente la cantidad de ejecuciones paralelas del comando de postman a `4`. ¿El comportamiento del sistema es porcentualmente mejor?
+--
 
 ### Parte 2 - Escalabilidad horizontal
 
