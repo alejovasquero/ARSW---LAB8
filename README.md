@@ -108,7 +108,18 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
     de los más importantes, como 22 de ssh o el 80 de web.
     
 4. Adjunte tabla de tiempos e interprete por qué la función tarda tando tiempo.
+
+![](images/part1/beforeEV/docTimes0.png)
+
+![](images/part1/beforeEV/docTimes.PNG)
+
+La funcion recibe un numero, pero por lo que es tan grande el numero a calcular, la funcion ocupa mas capacidad de procesamiento y memoria para calcular el valor para devolver.
+
 5. Adjunte imágen del consumo de CPU de la VM e interprete por qué la función consume esa cantidad de CPU.
+![](images/part1/beforeEV/docMachine.PNG)
+
+El procesamiento es alto y se refleja en el reporte de la maquina, que se usa un 100% de capacidad para la funcion, adicionalmente se puede ver que el uso del disco es critico durante un momento mientras se usa la funcion.
+
 6. Adjunte la imagen del resumen de la ejecución de Postman. Interprete:
     * Tiempos de ejecución de cada petición. 
     
@@ -132,6 +143,7 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
         Las respuestas han llegado a segundos, y postman se ha completado más rápido.
         
     * Si hubo fallos documentelos y explique.
+
     
         Durante Postman se encontró el siguiente fallo.
         
@@ -141,13 +153,51 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
         realizando tareas de configuración, por lo que cualquier petición no será atendida.
         
 7. ¿Cuál es la diferencia entre los tamaños `B2ms` y `B1ls` (no solo busque especificaciones de infraestructura)?
+
+    - B1ls: 
+  Solo funciona en Linux
+  CPU: 1
+  RAM: 0.5
+  Temp SSD: 4 
+  Discos Maximos: 2
+  Costo: 3,80 US$
+     - B2ms
+  CPU: 2
+  RAM: 8
+  Temp SSD: 16 
+  Discos Maximos: 4
+  Costo: 60,74 US$
+  
 8. ¿Aumentar el tamaño de la VM es una buena solución en este escenario?, ¿Qué pasa con la FibonacciApp cuando cambiamos el tamaño de la VM?
---
+
+    * En este escenario, el cambio en procesamiento es del doble, y en memoria. se ve una mejora de 16 veces la inicial.
+    Dado que la máquina es bastante básica, realizar mejoras muestra resultados notables, en nuestro caso, de minutos.
+    
+        En el futuro, entre más actualizaciones, quizás la mejora sería cada vez más pequeña. 
+    
+    * Al escalar verticalmente se tuvo que volver a iniciar la aplicación, debido a que hubo algún reinicio o cambio de procesos en la máquina.
+    
 9. ¿Qué pasa con la infraestructura cuando cambia el tamaño de la VM? ¿Qué efectos negativos implica?
---
+
+    Como vimos en el punto anterior, al realizar mejoras, se implica un reinicio. lo que 
+    no es conveniente cuando se tienen arquitecturas basadas en la alta disponibilidad 
+    y donde no se puede perder información que está en memoria. 
+
 10. ¿Hubo mejora en el consumo de CPU o en los tiempos de respuesta? Si/No ¿Por qué?
+
+    La gráfica muestra la mejora a través del tiempo.
+
+    ![](images/part1/afterEV/docMachine.PNG)
+    
+    Está mejora está dada por el aumento en unidades de procesamiento y en memoria, 
+    lo que ayuda mucho en tareas que requieran alto almacenamiento que no tenga que irse a disco, lo que produce latencias muy altas.
+    
 11. Aumente la cantidad de ejecuciones paralelas del comando de postman a `4`. ¿El comportamiento del sistema es porcentualmente mejor?
---
+
+    La petición original de fibonacci de 1000000 duraba 4 minutos en un browser, pero por medio de postman y escalamiento vertical,
+    se obtuvo un promedio de 27 segundos de respuesta.
+    
+     ![](images/part1/afterEV/mejora.PNG)
 
 ### Parte 2 - Escalabilidad horizontal
 
