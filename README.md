@@ -286,12 +286,62 @@ newman run ARSW_LOAD-BALANCING_AZURE.postman_collection.json -e [ARSW_LOAD-BALAN
 **Preguntas**
 
 * ¿Cuáles son los tipos de balanceadores de carga en Azure y en qué se diferencian?, ¿Qué es SKU, qué tipos hay y en qué se diferencian?, ¿Por qué el balanceador de carga necesita una IP pública?
+
+SKU (Stock Keeping Unit)
+
+Para hacer un seguimiento de un conjunto de recursos se necesita identificar que productos se usan para disminuir costes adicionales.
+
+Comprende las aplicaciones, metricas de licencias y terminos basicos que se puedan adicionar a la identificacion del producto. Tambien se pueden ver que derechos existen sobre este.
+
+Pueden haber muchas maneras de identificar los productos, EAN, UPC, SKU pueden ser alternativas que se busquen para abordar el maximo de informacion que se pueda dar sobre el recurso, se difernecian en el tipo de codificacion y el tamaño que posee la identificacion, el uso externo e interno de los estandares.
+
+Traffic Manager
+Proporciona equilibrio de carga para el DNS global. Analiza las peticiones DNS que entran para responder a un punto optimo de conexion, que puede ser personalizado con la directiva de enrutamiento.
+
+Application Gateway
+Provee funcionalidades con equilibrio de carga de nivel 7 para la aplicacion, entrega aplicaciones y puede configurarse como ina puerta accesible desde internet.
+
+Load Balancer:
+Proporciona servicios de equilibrio de carga de capa 4 de alto rendimiento y baja latencia para protocolos UDP y TCP. Posee opciones de sondeo de estado en TCP y HTTP.
+
+El balanceador de carga necesita una ip publica porque el cliente cuando hace una peticion al servidor, realmente esta accediendo al balanceador de carga para que de esta manera el balanceador pueda atender la peticion en un servidor disponible. Adicionalmente puede nombrarse con una identificacion que le permita al DNS buscar de manera rapida el acceso.
+
 * ¿Cuál es el propósito del *Backend Pool*?
+
+Define el conjunto de recursos que serviran para el trafico de las reglas en el balanceo de carga.
+
 * ¿Cuál es el propósito del *Health Probe*?
+
+Pueden detectar fallos en una aplicacion, como endpoints desde el backend, tambien para supervisar tiempos de carga y descarga.
+
 * ¿Cuál es el propósito de la *Load Balancing Rule*? ¿Qué tipos de sesión persistente existen, por qué esto es importante y cómo puede afectar la escalabilidad del sistema?.
+
+
 * ¿Qué es una *Virtual Network*? ¿Qué es una *Subnet*? ¿Para qué sirven los *address space* y *address range*?
+
+Virtual Network
+Permiten la comunicacion segura entre recursos de Azure y el internet, ademas provee mas beneficios para la infraestructura, como por ejemplo el aislamiento de zonas de trabajo, escalamiento y disponibilidad.
+
+Subnet
+
+Permiten segmentar la red en una o mas subredes y desplegar recursos en estas zonas.
+
+Address space
+
+Se asigna un espacio de direcciones para que Azure pueda asignar direcciones en ese espacio a los recursos que se necesiten para el despliegue de los servicios.
+
 * ¿Qué son las *Availability Zone* y por qué seleccionamos 3 diferentes zonas?. ¿Qué significa que una IP sea *zone-redundant*?
+
+Azure opera globalmente, por lo cual el cliente puede modificar las zonas para obtener el nivel mas optimo que le permita cumplir con sus necesidades.
+
+La redundancia se basa en la replicacion de las instancias para que permita un aseguramiento de los datos y evitar perdidas de informacion.
+
+Azure permite poner zonas de disponibilidad en respuesta a posibles fallos, de manera que ofrece alta disponibilidad, son unicas y pertenecen a areas especificas en una region
+
 * ¿Cuál es el propósito del *Network Security Group*?
+
+Filtrar el trafico de la red de recursos de azure en una red virtual, contiene reglas de seguridad que permiten o deniegan por la entrada y salida de algun recurso, puerto y protocolo del destino.
+
 * Informe de newman 1 (Punto 2)
 * Presente el Diagrama de Despliegue de la solución.
 
