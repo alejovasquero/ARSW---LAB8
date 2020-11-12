@@ -29,3 +29,23 @@ barata la instalación de 3 equipos, y también más confiable con respecto a la
 solicitudes, pero es menos eficiente en términos de procesamiento, por lo que tener una máquina más fuerte es una opción,
 pero costará 4.3 veces en este caso.
 
+
+#### Informe comparativo de escalado horizontal
+
+Una vez enviados 4 peticiones de manera paralela, se obtuvieron los siguientes resultados.
+
+![](../images/part2/images/m1.png)
+
+![](../images/part2/images/m2.png)
+
+![](../images/part2/images/m3.png)
+
+![](../images/part2/images/m4.png)
+
+Una máquina muestra bajo uso de CPU y las otras no llegan del todo al 100% de uso de CPU,
+por lo que hay espacio de mejora.
+La tasa de éxito fue la misma, aún excelente. El éxito de estas peticiones es debido a la disponibilidad de 
+equipos que aún tienen procesamiento disponible, por lo que el balanceador de carga podrá
+repartir estas peticiones de manera inteligente, lo que no pasa con una sola máquina que
+pone en cola múltiples peticiones mientras tiene uso alto de CPU y de memoria.
+ 

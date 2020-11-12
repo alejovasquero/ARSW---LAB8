@@ -346,7 +346,12 @@ Azure permite poner zonas de disponibilidad en respuesta a posibles fallos, de m
 Filtrar el trafico de la red de recursos de azure en una red virtual, contiene reglas de seguridad que permiten o deniegan por la entrada y salida de algun recurso, puerto y protocolo del destino.
 
 * Informe de newman 1 (Punto 2)
+
+[INFORMES](informes/parteA.md)
+
 * Presente el Diagrama de Despliegue de la solución.
+
+![](images/part2/images/components.png)
 
 
 
