@@ -318,6 +318,7 @@ Pueden detectar fallos en una aplicacion, como endpoints desde el backend, tambi
 
 * ¿Cuál es el propósito de la *Load Balancing Rule*? ¿Qué tipos de sesión persistente existen, por qué esto es importante y cómo puede afectar la escalabilidad del sistema?.
 
+Pueden haber reglas internas o externas que permitan la distribucion optima de las peticiones que se reciben, puede afectar la escalabilidad a reglas que esten muy limitadas o sean demasiado especificas para ciertos casos donde se quiere aumentar el rendimiento de la aplicacion.
 
 * ¿Qué es una *Virtual Network*? ¿Qué es una *Subnet*? ¿Para qué sirven los *address space* y *address range*?
 
